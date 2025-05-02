@@ -30,7 +30,6 @@
 1746024329133:chat get my repositories
 1746046593027:chat create a new vm on oracle cloud with 3 ocpus named vm-mcpchat vcn named vcn-mcp subnet named subnet-mcp and 6gb of memory
 1746046796283:chat create a new vm on oracle cloud with 3 ocpus named vm-mcpchat vcn named vcn-mcp subnet named subnet-mcp and 6gb of memory compartment crazyhorse
-1746047906419:chat garoto mais bonito de sbo
 1746047918418:chat quem descobriu o brasil
 1746048720360:chat quero criar uma maquina virtual na oci com o nome de instance-teste2 com 2 ocpus e 5gb de memoria, no compartment crazyhorse, vcn chamada vcn-teste2 e subnet chamada subnet-teste2
 1746049889087:chat quero criar uma maquina virtual na oci com o nome de instance-teste3 com 2 ocpus e 5gb de memoria, no compartment crazyhorse, vcn chamada vcn-teste3 e subnet chamada subnet-teste3
@@ -39,9 +38,6 @@
 1746054377734:chat crie uma vm chamada vm-oi na oci
 1746054411294:chat crie uma vm chamada vm-oi na oci no compartment crazyhorse 1 ocpu 1gb de memoria vcn nomeada de vcn-oi e subnet de subnet-oi
 1746056257623:chat please create a vm named vm-mcpdemo with 2 ocpus, 4gb of memory, vcn named vcn-mcpdemo and subnet named subnet-demo all of this on compartment crazyhorse
-1746069596384:chat quem é o garoto mais bonito de sbo
-1746069628202:chat quem e garota mais linda de americana
-1746069785929:chat quem é a garota mais linda de sbo
 1746194866538:chat create a vm named vm-teste with 1 ocpu and 1gb memory, vcn named t-vcn and subnet t-subnet, compartment crazyhorse on Oracle Cloud
 1746195932685:chat create a vm named vm-test-google with 1 ocpu and 1gb memory on gcp
 1746195945207:chat create a vm named vm-test-google with 1 ocpu and 1gb memory on google
