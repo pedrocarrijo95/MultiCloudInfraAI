@@ -11,6 +11,7 @@
 * Go to the folder `templates/oracle/compute/` or `templates/google/compute/`.
 * Open the `terraform.tfvars.template` file and insert your credentials/config info.
 * Make sure static info like region or credentials are filled in `terraform.tfvars.template`.
+* Only For Oracle Cloud (Configure the file compartments.properties with the compartment_name=compartment_ocid)
 
 > If using credentials like keys, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
 
