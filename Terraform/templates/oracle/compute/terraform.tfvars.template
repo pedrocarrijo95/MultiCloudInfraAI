@@ -1,0 +1,33 @@
+#provider
+
+tenancy_ocid = "<tenancy_ocid>"
+user_ocid = "<user_ocid>"
+fingerprint = "<fingerprint>"
+private_key_path = "<basepath>/Terraform/templates/oracle/key/privatekey.pem"
+region = "<region>"
+
+
+#compute
+
+compartment_ocid = "{{compartment_ocid}}"
+shape = "VM.Standard.E3.Flex"
+source_ocid = "<image_ocid>"
+source_type = "image"
+ocpus_count = "{{ocpus_count}}"
+memory_count = "{{memory_count}}"
+ssh_public_keys = "<basepath>/Terraform/templates/oracle/key/ssh_key_compute.pub"
+
+#network
+
+vcn_cidr_block = "10.0.0.0/16"
+subnet_cidr_block = "10.0.1.0/24"
+availability_domain ="cWdu:SA-SAOPAULO-1-AD-1"
+
+#names
+
+vcn_display_name = "{{vcn_display_name}}"
+subnet_display_name = "{{subnet_display_name}}"
+instance_display_name = "{{instance_display_name}}"
+
+#oci compute image list --compartment-id ocid1.tenancy.oc1..aaaaaaaaobeqxob5en7zpyjq3red676cqvgr74alea4y7dhegtzgt36cicoa --region sa-saopaulo-1
+#oci iam availability-domain list --compartment-id ocid1.tenancy.oc1..aaaaaaaaobeqxob5en7zpyjq3red676cqvgr74alea4y7dhegtzgt36cicoa --region sa-saopaulo-1

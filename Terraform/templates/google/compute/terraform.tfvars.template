@@ -1,0 +1,14 @@
+#provider
+
+project = "<project-id>"
+region = "<region>"
+zone = "<zone>"
+credentials_file = "<basepath>/Terraform/templates/google/svcaccount/svcaccountjson.json"
+
+#compute
+
+instance_display_name = "{{instance_display_name}}"
+image = "ubuntu-minimal-2210-kinetic-amd64-v20230126"
+#machine_type = "n1-standard-1"
+ocpus_count = "{{ocpus_count}}"
+memory_count = "{{memory_count}}"
