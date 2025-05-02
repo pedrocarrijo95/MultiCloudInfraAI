@@ -166,7 +166,7 @@ switch (providerName.toLowerCase()) {
 Create a file named `compartments.properties` in `resources/`, mapping:
 
 ```
-<name>=<ocid>
+<compartment_name>=<compartment_ocid>
 ```
 
 Used by the `addOCIComputeVariables(...)` method to resolve compartment OCIDs dynamically.
