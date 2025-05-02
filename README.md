@@ -119,7 +119,7 @@ Follow the detailed [implementation & extension tutorial](docs/guide-setup-expan
 
 ## 🪪 Author & Credits
 
-Created by [Pedro Carrijo](https://github.com/pedrocarrijo), this is the **first project of its kind** to integrate AI, Terraform, and multi-cloud provisioning into a single, extensible platform.
+Created by [Pedro Carrijo](https://github.com/pedrocarrijo95), this is the **first project of its kind** to integrate AI, Terraform, and multi-cloud provisioning into a single, extensible platform.
 
 ---
 
