@@ -46,8 +46,13 @@ chat create a VM named gcp-test, using 2 OCPUs and 8 GB memory in Google Cloud
 ```
 
 ---
+## 🧪 Test It Yourself
 
-## 🖥️ How to Run
+Want to try MultiCloudInfraAI now? You can! Follow our **step-by-step guide** to set it up locally and start creating infrastructure with natural language.
+
+👉 [How to Set Up MultiCloudInfraAI](docs/guide-setup-expandability.md)
+
+## 🖥️ How to Run (Follow the doc above before run that)
 
 ### Step 1 — Run MCP Server
 
@@ -80,9 +85,9 @@ The mcp-client can also connect with the official [GitHub-hosted MCP Server](htt
 
 To use it:
 
-Open ChatCommands.java
+- Open ChatCommands.java
 
-Set the environment variable GITHUB_PERSONAL_ACCESS_TOKEN with your GitHub token
+- Set the environment variable GITHUB_PERSONAL_ACCESS_TOKEN with your GitHub token
 
 This allows you to interact with a live MCP Server hosted in the cloud, ideal for testing without local setup.
 
@@ -93,7 +98,7 @@ You can add:
 - New **providers** (like AWS or Azure)
 - New **resource types** (like buckets, load balancers, databases...)
 
-Follow the detailed [implementation & extension tutorial](docs/add-provider.md) for guidance on:
+Follow the detailed [implementation & extension tutorial](docs/guide-setup-expandability.md) for guidance on:
 
 - Setting up Terraform templates
 - Creating Java methods
@@ -122,7 +127,7 @@ Created by [Pedro Carrijo](https://github.com/pedrocarrijo), this is the **first
 
 📖 For setup instructions, adding providers or resources, and template rules, read:
 
-👉 [`docs/add-provider.md`](docs/add-provider.md)
+👉 [`docs/guide-setup-expandability.md`](docs/guide-setup-expandability.md)
 
 ---
 
