@@ -136,6 +136,9 @@ edit<Provider><Resource>Variables(String tfvarsContent, ...)
 ```
 
 Call this before writing the file.
+```java
+Files.write(...)
+```
 
 ---
 
@@ -154,7 +157,7 @@ switch (providerName.toLowerCase()) {
 
 ---
 
-### 8. Compartments for Oracle (OCI)
+### 8. Compartments for Oracle (OCI) ⚠️
 
 Create a file named `compartments.properties` in `resources/`, mapping:
 
