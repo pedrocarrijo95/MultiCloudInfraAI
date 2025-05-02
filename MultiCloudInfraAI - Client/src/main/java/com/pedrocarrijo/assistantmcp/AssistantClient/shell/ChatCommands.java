@@ -64,8 +64,8 @@ public class ChatCommands {
         try {
             return this.chatClient.prompt(prompt).tools(tools).call().content();
         } catch (Exception e) {
-            System.err.println("Falha ao acessar MCP tools: " + e.getMessage());
-            return "Não consegui acessar o MCP Server agora. Tente novamente em instantes.";
+            System.err.println("Failed to access MCP tools: " + e.getMessage());
+            return "I was unable to access the MCP Server right now. Please try again in a few moments.";
         }
     }
 }
