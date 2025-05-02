@@ -9,10 +9,13 @@
 ### 1. Configure Templates (Oracle or Google Cloud)
 
 * Go to the folder `templates/oracle/compute/` or `templates/google/compute/`.
-* Open the `provider.tf` file and insert your credentials/config info.
+* Open the `terraform.tfvars.template` file and insert your credentials/config info.
 * Make sure static info like region or credentials are filled in `terraform.tfvars.template`.
 
 > If using credentials like keys, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
+
+* Fields wrapped with {{variable}} are dynamically filled by the Java code. Do not edit them manually — they are automatically replaced at runtime.
+* Fields between < > (e.g., <tenancy-ocid>) must be manually filled in before running the project. These are fixed values such as keys, OCIDs, regions, etc.
 
 ---
 
