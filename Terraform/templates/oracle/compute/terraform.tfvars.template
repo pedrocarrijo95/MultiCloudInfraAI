@@ -29,5 +29,6 @@ vcn_display_name = "{{vcn_display_name}}"
 subnet_display_name = "{{subnet_display_name}}"
 instance_display_name = "{{instance_display_name}}"
 
-#oci compute image list --compartment-id ocid1.tenancy.oc1..aaaaaaaaobeqxob5en7zpyjq3red676cqvgr74alea4y7dhegtzgt36cicoa --region sa-saopaulo-1
-#oci iam availability-domain list --compartment-id ocid1.tenancy.oc1..aaaaaaaaobeqxob5en7zpyjq3red676cqvgr74alea4y7dhegtzgt36cicoa --region sa-saopaulo-1
+#Commands to help get image ocid and availability-domain 
+#oci compute image list --compartment-id <compartment_ocid> --region sa-saopaulo-1
+#oci iam availability-domain list --compartment-id <compartment_ocid> --region sa-saopaulo-1
