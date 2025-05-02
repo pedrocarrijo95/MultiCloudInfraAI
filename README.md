@@ -1,6 +1,8 @@
 
 # 🚀 MultiCloudInfraAI
 
+Provisioning via CLI is slow? I built a project that turns natural language into real infrastructure.
+
 **MultiCloudInfraAI** is the **first open-source project** to bring AI-powered natural language interfaces to Terraform-based **multi-cloud infrastructure provisioning**.
 
 Created by **Pedro Carrijo**, this system lets users — technical or not — create, edit, and destroy cloud infrastructure across providers like **Oracle Cloud, Google Cloud**, and more (AWS, Azure) by simply describing what they want in natural language.
