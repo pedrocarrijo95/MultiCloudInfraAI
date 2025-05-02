@@ -28,7 +28,7 @@ You can easily expand to support other resources (e.g. buckets, databases, etc.)
 ## 🧠 Powered By
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring AI (Model Context Protocol - MCP](https://docs.spring.io/spring-ai/reference/)
+- [Spring AI (Model Context Protocol - MCP)]([https://docs.spring.io/spring-ai/reference/](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html))
 - [Terraform](https://www.terraform.io/)
 
 ---
