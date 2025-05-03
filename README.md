@@ -32,8 +32,10 @@ You can easily expand to support other resources (e.g. buckets, databases, etc.)
 ## 🧠 Powered By
 
 - [Spring Boot](https://spring.io/projects/spring-boot)
-- [Spring AI (Model Context Protocol - MCP)](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
+- [Spring AI (MCP Server)](https://docs.spring.io/spring-ai/reference/api/mcp/mcp-overview.html)
 - [Terraform](https://www.terraform.io/)
+- OpenAi / LLMs
+- Spring Shell CLI (MCP Client)
 
 ---
 
