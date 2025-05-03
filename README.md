@@ -25,7 +25,7 @@ Built with **Spring Boot**, **Terraform**, and **Spring AI**, MultiCloudInfraAI 
 
 You can easily expand to support other resources (e.g. buckets, databases, etc.) and providers (e.g. AWS, Azure).
 
-![Architecture]([URL_da_Imagem](https://github.com/pedrocarrijo95/MultiCloudInfraAI/blob/main/docs/project-architecture.png))
+![Architecture](https://github.com/pedrocarrijo95/MultiCloudInfraAI/blob/main/docs/project-architecture.png)
 
 ---
 
