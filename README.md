@@ -154,4 +154,7 @@ MultiCloudInfraAI is **open-source** to encourage innovation in cloud infrastruc
 
 You’re free to fork, use, adapt, or extend — with or without contributing back.
 
+### Follow my Blog:
+http://pedrocarrijo.dev
+
 ---
