@@ -4,7 +4,7 @@
 
 This update brings full tool-based infrastructure provisioning to a lightweight and fast Quarkus backend — without needing Spring.
 
-### Watch the Video Demo:
+### Watch the Quarkus Video Demo:
 https://youtu.be/t7J4fByAFtg?si=032UetLjogcdcIaY
 
 ### Follow my Blog:
