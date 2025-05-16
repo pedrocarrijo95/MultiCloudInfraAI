@@ -181,3 +181,6 @@ Used by the `addOCIComputeVariables(...)` method to resolve compartment OCIDs dy
 * Create templates under: `templates/<provider>/database/`
 
 Ready! 🌟 Your new resource is fully supported.
+
+### Follow my Blog:
+http://pedrocarrijo.dev
