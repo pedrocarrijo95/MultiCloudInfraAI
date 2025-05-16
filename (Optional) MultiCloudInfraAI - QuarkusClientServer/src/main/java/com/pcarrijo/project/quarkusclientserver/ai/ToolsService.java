@@ -19,12 +19,12 @@ import org.jboss.logging.Logger;
 import org.jboss.logging.Logger.Level;
 
 
-import jakarta.annotation.PostConstruct;
-import jakarta.inject.Singleton;
+
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import jakarta.enterprise.context.ApplicationScoped;
 import dev.langchain4j.agent.tool.Tool;
+
 @ApplicationScoped
 public class ToolsService {
      
@@ -51,6 +51,8 @@ public class ToolsService {
                                        String subnetDisplayName,
                                        String instanceDisplayName) throws IOException {
 
+        logger.info("Creating compute VM in " + providerName + " cloud...");
+
         Map<String, String> variables = new HashMap<>();
         String provider = resolveProviderFolder(providerName);
         addCommonVariables(variables, ocpusCount, memoryCount, instanceDisplayName, provider);
@@ -72,6 +74,8 @@ public class ToolsService {
 
     @Tool("Delete/destroy a compute VM in Cloud")
     public String deleteComputeVmOracleCloud(String providerName, String instanceDisplayName) {
+
+        logger.info("Deleting compute VM in " + providerName + " cloud...");
 
         String provider = resolveProviderFolder(providerName);
         String terraformPath = basePath + "Terraform/" + provider + "/compute/" + instanceDisplayName;
@@ -100,6 +104,8 @@ public class ToolsService {
                                            String newInstanceDisplayName,
                                            int newOcpusCount,
                                            int newMemoryCount) throws IOException {
+
+        logger.info("Editing compute VM in " + providerName + " cloud...");
 
         String provider = resolveProviderFolder(providerName);
         String terraformPath = basePath + "Terraform/" + provider + "/compute/" + instanceDisplayName;
@@ -180,7 +186,7 @@ public class ToolsService {
             case "oracle", "oci", "oraclecloud", "oracle cloud" -> "oracle";
             case "aws", "amazon" -> "aws";
             case "azure", "microsoft" -> "azure";
-            case "gcp", "google" -> "google";
+            case "gcp", "google", "google cloud" -> "google";
             default -> throw new IllegalArgumentException("Unsupported provider: " + providerName);
         };
     }
