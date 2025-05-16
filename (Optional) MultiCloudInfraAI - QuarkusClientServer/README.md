@@ -1,79 +1,143 @@
-# Getting started with Quarkus
+# 🚀 MultiCloudInfraAI – Quarkus + LangChain4j Tools
 
-This is a minimal CRUD service exposing a couple of endpoints over REST.
+**MultiCloudInfraAI** is an open-source Java project that turns natural language prompts into real, provisioned cloud infrastructure using **Terraform**, **OpenAI (or other LLMs)**, and now runs on **Quarkus** with **LangChain4j Tools**.
 
-Under the hood, this demo uses:
+This update brings full tool-based infrastructure provisioning to a lightweight and fast Quarkus backend — without needing Spring.
 
-- RESTEasy to expose the REST endpoints
-- REST-assured and JUnit 5 for endpoint testing
+### Watch the Video Demo:
+https://youtu.be/t7J4fByAFtg?si=032UetLjogcdcIaY
 
-## Requirements
+### Follow my Blog:
+http://pedrocarrijo.dev
 
-To compile and run this demo you will need:
+### Want to explore MultiCloudInfraAI with more resource types, specific cloud providers, and learn how to extend what’s already built? Check out our step-by-step guide and get started now.
 
-- JDK 17+
-- GraalVM
+👉 [How to Set Up MultiCloudInfraAI](docs/guide-setup-expandability.md)
 
-### Configuring GraalVM and JDK 17+
+---
 
-Make sure that both the `GRAALVM_HOME` and `JAVA_HOME` environment variables have
-been set, and that a JDK 17+ `java` command is on the path.
+## ✅ Prerequisites
 
-See the [Building a Native Executable guide](https://quarkus.io/guides/building-native-image-guide)
-for help setting up your environment.
+- Java 17+
+- Maven 3.8+
+- Terraform CLI installed and in your PATH
+- OpenAI API Key (or Ollama running locally)
+- Postman or any REST client for testing
 
-## Building the application
+---
 
-Launch the Maven build on the checked out sources of this demo:
+## 🔧 Step 1 – Configure `application.properties`
 
-> ./mvnw package
+Edit the file:
+src/main/resources/application.properties
 
-### Live coding with Quarkus
+Fill in the values  with your real API key and absolute paths
 
-The Maven Quarkus plugin provides a development mode that supports
-live coding. To try this out:
+```properties
+quarkus.http.port=8080
+quarkus.langchain4j.openai.api-key=<api-key>
+#quarkus.langchain4j.ai.gemini.m1.chat-model.model-id=<model-name>
 
-> ./mvnw quarkus:dev
 
-This command will leave Quarkus running in the foreground listening on port 8080.
+# Terraform Tool VARs
+#your base path where contain mcp client and server folders
+mcp.base-path=/home/opc/volume/MultiCloudInfraAI/
+#your templates path
+mcp.terraform.templates-path=${mcp.base-path}Terraform/templates/
+#your compartments.properties path to use compartmentid Oracle Cloud
+mcp.compartments-file=${mcp.base-path}MultiCloudInfraAI - QuarkusClientServer/src/main/resources/compartments.properties
+#your path to access terraform binary
+terraform.binary.path=/usr/bin/terraform
+```
 
-1. Visit the default endpoint: [http://127.0.0.1:8080](http://127.0.0.1:8080).
-    - Make a simple change to [src/main/resources/META-INF/resources/index.html](src/main/resources/META-INF/resources/index.html) file.
-    - Refresh the browser to see the updated page.
-2. Visit the `/hello` endpoint: [http://127.0.0.1:8080/hello](http://127.0.0.1:8080/hello)
-    - Update the response in [src/main/java/org/acme/quickstart/GreetingResource.java](src/main/java/org/acme/quickstart/GreetingResource.java). Replace `hello` with `hello there` in the `hello()` method.
-    - Refresh the browser. You should now see `hello there`.
-    - Undo the change, so the method returns `hello` again.
-    - Refresh the browser. You should now see `hello`.
+## 🔐 Step 2 – Add your Terraform credentials
 
-### Run Quarkus in JVM mode
+Go to your Terraform template directory. For example, for Oracle Cloud:
 
-When you're done iterating in developer mode, you can run the application as a
-conventional jar file.
 
-First compile it:
+Fill in the file with your actual provider credentials:
 
-> ./mvnw package
+```hcl
+tenancy_ocid = "<tenancy_ocid>"
+user_ocid = "<user_ocid>"
+fingerprint = "<fingerprint>"
+private_key_path = "<basepath>/Terraform/templates/oracle/key/privatekey.pem"
+region = "<region>"
+``` 
 
-Then run it:
+Edit the template terraform folder according your provider (OCI, GCP, ...)
 
-> java -jar ./target/quarkus-app/quarkus-run.jar
+Make sure:
 
-Have a look at how fast it boots, or measure the total native memory consumption.
+- private_key_path points to a valid private key file on your machine
+- region matches the region where you want to provision resources
+- You repeat this setup for each provider you plan to use (e.g., GCP, AWS)
+- The .tfvars.template file is used to dynamically generate real .tfvars during provisioning.
 
-### Run Quarkus as a native executable
+## ▶️ Step 3 – Run the Quarkus application
 
-You can also create a native executable from this application without making any
-source code changes. A native executable removes the dependency on the JVM:
-everything needed to run the application on the target platform is included in
-the executable, allowing the application to run with minimal resource overhead.
+With all configurations in place, start the application in development mode using Maven:
 
-Compiling a native executable takes a bit longer, as GraalVM performs additional
-steps to remove unnecessary codepaths. Use the  `native` profile to compile a
-native executable:
+```bash
+mvn quarkus:dev
+```
+This will start the Quarkus server locally on:
+```
+http://localhost:8080
+```
 
-> ./mvnw package -Dnative
+## 💬 Step 4 – Send a prompt using Postman
 
-After getting a cup of coffee, you'll be able to run this executable directly:
+Now that the application is running, you can interact with it using Postman or any REST client.
 
-> ./target/getting-started-1.0.0-SNAPSHOT-runner
+1. Open **Postman**
+2. Create a **POST** request to:
+
+```
+http://localhost:8080/api/ai/chat
+```
+
+3. In the **Body** tab:
+   - Select **raw**
+   - Choose **Text** (not JSON)
+
+4. Enter a natural language prompt like this:
+```
+"create a VM named dev-instance with 2 OCPUs and 4GB RAM in Oracle Cloud using VCN dev-vcn and subnet dev-subnet under compartment oci-dev-compartment"
+```
+
+5. Click **Send**
+
+You should receive a response indicating that the infrastructure provisioning has started.
+
+The backend will:
+- Parse the request with the LLM
+- Match it to the correct tool method
+- Generate Terraform files dynamically
+- Run `terraform init`, `plan`, and `apply`
+- Store the state in the configured folder for later edits or deletions
+
+## 📂 What happens behind the scenes?
+
+Here’s how **MultiCloudInfraAI** processes your request step by step:
+
+1. 🧠 The prompt is sent to the selected LLM (e.g., OpenAI)
+2. 🧩 LangChain4j analyzes the prompt and matches it to the correct `@Tool` method
+3. 📁 The application loads the appropriate Terraform templates based on the provider and resource type
+4. 🛠️ It fills in the variables using the prompt data and creates a new folder with a complete Terraform project
+5. ⚙️ The system executes:
+   - `terraform init`
+   - `terraform plan`
+   - `terraform apply -auto-approve`
+6. 📌 The Terraform state is stored in the generated folder for future updates or deletions
+
+Each execution is isolated by:
+- Cloud provider (e.g., `oracle`, `gcp`)
+- Resource type (e.g., `compute`)
+- Instance name
+
+This ensures safe, modular, and repeatable infrastructure management.
+
+Follow my Blog:
+http://pedrocarrijo.dev
+
