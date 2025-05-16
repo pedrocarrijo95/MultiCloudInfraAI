@@ -138,6 +138,5 @@ Each execution is isolated by:
 
 This ensures safe, modular, and repeatable infrastructure management.
 
-Follow my Blog:
+### Follow my Blog:
 http://pedrocarrijo.dev
-
