@@ -140,6 +140,14 @@ Created by [Pedro Carrijo](https://github.com/pedrocarrijo95), this is a project
 
 ---
 
+## ⚙️ Do you want try with Quarkus?
+
+📖 For setup instructions, read:
+
+👉 [`(Optional) MultiCloudInfraAI - QuarkusClientServer`](https://github.com/pedrocarrijo95/MultiCloudInfraAI/tree/main/(Optional)%20MultiCloudInfraAI%20-%20QuarkusClientServer)
+
+---
+
 ## 📢 License & Contributions
 
 MultiCloudInfraAI is **open-source** to encourage innovation in cloud infrastructure automation.
