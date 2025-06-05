@@ -34,25 +34,8 @@ public class ChatCommands {
 
     public ChatCommands(ChatClient.Builder builder, ToolCallbackProvider tools) {
         this.tools = tools;
-        ServerParameters params = ServerParameters.builder("docker")
-        .args("run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server")
-        .env(Map.of("GITHUB_PERSONAL_ACCESS_TOKEN", "<your-key>"))
-        .build();
-        McpTransport transport = new StdioClientTransport(params);
-
-        McpSyncClient client = McpClient.sync((McpClientTransport) transport)
-            .requestTimeout(Duration.ofSeconds(10))
-            .capabilities(ClientCapabilities.builder()
-                .roots(true)      
-                .sampling()  
-                .build())
-            .build();
-        
-        client.initialize();
-
-        ToolCallbackProvider toolProvider = new SyncMcpToolCallbackProvider(client);
         this.chatClient = builder
-                .defaultTools(toolProvider)
+                .defaultTools(tools)
                 .defaultAdvisors(new MessageChatMemoryAdvisor(new InMemoryChatMemory()))
                 .build();
         System.out.println(tools);
@@ -62,7 +45,7 @@ public class ChatCommands {
     @ShellMethod(key = "chat")
     public String interactiveChat(@ShellOption(defaultValue = "Hi I am the MCP Client") String prompt) {
         try {
-            return this.chatClient.prompt(prompt).tools(tools).call().content();
+            return this.chatClient.prompt(prompt).call().content();
         } catch (Exception e) {
             System.err.println("Failed to access MCP tools: " + e.getMessage());
             return "I was unable to access the MCP Server right now. Please try again in a few moments.";
