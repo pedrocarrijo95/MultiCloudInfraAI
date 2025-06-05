@@ -89,17 +89,6 @@ Once running, you'll see a Spring Shell prompt. You can now type natural languag
 
 ---
 
-## 🌐 Extra: GitHub Integration
-The mcp-client can also connect with the official [GitHub-hosted MCP Server](https://github.com/github/github-mcp-server) recently released.
-
-To use it:
-
-- Open ChatCommands.java
-
-- Set the environment variable GITHUB_PERSONAL_ACCESS_TOKEN with your GitHub token
-
-This allows you to interact with a live MCP Server hosted in the cloud, ideal for testing without local setup.
-
 ## 🔄 Expandability
 
 You can add:
