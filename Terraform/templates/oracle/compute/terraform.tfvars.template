@@ -1,10 +1,10 @@
 #provider
 
-tenancy_ocid = "<tenancy_ocid>"
-user_ocid = "<user_ocid>"
-fingerprint = "<fingerprint>"
-private_key_path = "<basepath>/Terraform/templates/oracle/key/privatekey.pem"
-region = "<region>"
+tenancy_ocid = "<tenancy_ocid>" #update this
+user_ocid = "<user_ocid>" #update this
+fingerprint = "<fingerprint>" #update this
+private_key_path = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/key/privatekey.pem" #update this
+region = "<region>" #update this
 
 
 #compute
@@ -15,7 +15,7 @@ source_ocid = "<image_ocid>"
 source_type = "image"
 ocpus_count = "{{ocpus_count}}"
 memory_count = "{{memory_count}}"
-ssh_public_keys = "<basepath>/Terraform/templates/oracle/key/ssh_key_compute.pub"
+ssh_public_keys = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/key/ssh_key_compute.pub" #update this
 
 #network
 
