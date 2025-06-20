@@ -21,7 +21,7 @@ http://pedrocarrijo.dev
 - Java 17+
 - Maven 3.8+
 - Terraform CLI installed and in your PATH
-- OpenAI API Key (or Ollama running locally)
+- OpenAI API Key
 - Postman or any REST client for testing
 
 ---
@@ -41,13 +41,9 @@ quarkus.langchain4j.openai.api-key=<api-key>
 
 # Terraform Tool VARs
 #your base path where contain mcp client and server folders
-mcp.base-path=/home/opc/volume/MultiCloudInfraAI/
+mcp.base-path=<prefix-path>/MultiCloudInfraAI/ > (e.g, /home/opc/volume/MultiCloudInfraAI/) #edit just this <prefix-path>
 #your templates path
-mcp.terraform.templates-path=${mcp.base-path}Terraform/templates/
-#your compartments.properties path to use compartmentid Oracle Cloud
-mcp.compartments-file=${mcp.base-path}MultiCloudInfraAI - QuarkusClientServer/src/main/resources/compartments.properties
-#your path to access terraform binary
-terraform.binary.path=/usr/bin/terraform
+terraform.binary.path=/usr/bin/terraform #keep or change the path to your terraform executable
 ```
 
 ## 🔐 Step 2 – Add your Terraform credentials
@@ -57,12 +53,17 @@ Go to your Terraform template directory. For example, for Oracle Cloud:
 
 Fill in the file with your actual provider credentials:
 
+* Fields wrapped with `{{variable}}` are dynamically filled by the Java code. Do not edit them manually — they are automatically replaced at runtime.
+* Fields between `< >` (e.g., `<tenancy-ocid>`) must be manually filled in before running the project. These are fixed values such as keys, `OCIDs, regions, etc.`
+
 ```hcl
 tenancy_ocid = "<tenancy_ocid>"
 user_ocid = "<user_ocid>"
 fingerprint = "<fingerprint>"
-private_key_path = "<basepath>/Terraform/templates/oracle/key/privatekey.pem"
+private_key_path = "<prefixpath>/MulticloudInfraAI/Terraform/templates/oracle/key/privatekey.pem"
 region = "<region>"
+
+ssh_public_keys = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/key/ssh_key_compute.pub"
 ``` 
 
 Edit the template terraform folder according your provider (OCI, GCP, ...)
