@@ -1,9 +1,9 @@
 #provider
 
-project = "<project-id>"
-region = "<region>"
-zone = "<zone>"
-credentials_file = "<basepath>/Terraform/templates/google/svcaccount/svcaccountjson.json"
+project = "<project-id>" #update this
+region = "<region>" #update this
+zone = "<zone>" #update this
+credentials_file = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/google/svcaccount/svcaccountjson.json" #update this
 
 #compute
 
