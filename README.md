@@ -61,32 +61,6 @@ Want to try MultiCloudInfraAI now? You can! Follow our **step-by-step guide** to
 
 👉 [How to Set Up MultiCloudInfraAI](docs/guide-setup-expandability.md)
 
-## 🖥️ How to Run (Follow the doc above before run that)
-
-### Step 1 — Run MCP Server
-
-Navigate to the `mcp-server` folder and run the backend:
-
-```bash
-mvn spring-boot:run
-```
-
-This launches the server responsible for generating and applying Terraform infrastructure based on the AI interpretation.
-
-### Step 2 — Run MCP Client
-
-Navigate to the `mcp-client` folder. This CLI interface lets you type natural language prompts.
-
-Edit the file: `src/main/resources/application.properties` and set the connection to your MCP Server instance endpoint: Ex - localhost:8181.
-
-Then run the client:
-
-```bash
-mvn spring-boot:run
-```
-
-Once running, you'll see a Spring Shell prompt. You can now type natural language infrastructure requests with "chat" prefix.
-
 ---
 
 ## 🔄 Expandability
