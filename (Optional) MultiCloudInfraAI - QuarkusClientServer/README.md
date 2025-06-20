@@ -29,7 +29,7 @@ http://pedrocarrijo.dev
 ## 🔧 Step 1 – Configure `application.properties`
 
 Edit the file:
-src/main/resources/application.properties
+`src/main/resources/application.properties`
 
 Fill in the values  with your real API key and absolute paths
 
@@ -75,7 +75,16 @@ Make sure:
 - You repeat this setup for each provider you plan to use (e.g., GCP, AWS)
 - The .tfvars.template file is used to dynamically generate real .tfvars during provisioning.
 
-## ▶️ Step 3 – Run the Quarkus application
+## 🔐 Step 3 – Only for Oracle Cloud
+
+* (Only for Oracle Cloud) Configure the file `/src/main/resources/compartments.properties` with the `compartment_name=compartment_ocid`
+
+> If using credentials like keys to authenticate (Oracle Cloud) with a `privatekey.pem` for example, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
+
+> To provision your compute VMs (Oracle Cloud) using SSH keys, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly (e.g., `ssh_key_compute.pub`)
+
+
+## ▶️ Step 4 – Run the Quarkus application
 
 With all configurations in place, start the application in development mode using Maven:
 
@@ -87,7 +96,7 @@ This will start the Quarkus server locally on:
 http://localhost:8080
 ```
 
-## 💬 Step 4 – Send a prompt using Postman
+## 💬 Step 5 – Send a prompt using Postman
 
 Now that the application is running, you can interact with it using Postman or any REST client.
 
@@ -109,7 +118,8 @@ http://localhost:8080/api/ai/chat
 
 5. Click **Send**
 
-You should receive a response indicating that the infrastructure provisioning has started.
+You should receive a response in your MCP Server console logs indicating that the infrastructure provisioning has started.
+Open the MCP Server console to see the terraform logs and debug if some errors occurs !
 
 The backend will:
 - Parse the request with the LLM
