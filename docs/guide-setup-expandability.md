@@ -20,7 +20,7 @@ region = "<region>"
 
 ssh_public_keys = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/key/ssh_key_compute.pub"
 ``` 
-* (Only for Oracle Cloud) Configure the file compartments.properties with the compartment_name=compartment_ocid
+* (Only for Oracle Cloud) Configure the file `/src/main/resources/compartments.properties` with the `compartment_name=compartment_ocid`
 
 > If using credentials like keys to authenticate (Oracle Cloud) with a `privatekey.pem` for example, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
 
@@ -33,7 +33,7 @@ ssh_public_keys = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/ke
 
 ### 2. Start MCP Server
 
-This is the backend that interprets natural language and triggers Terraform.
+This is the backend that is called by the mcp client and triggers Terraform.
 
 1. Go to `MultiCloudInfraAI - Server`
 2. Open `src/main/resources/application.properties`
@@ -56,7 +56,7 @@ mvn spring-boot:run
 
 ### 3. Start MCP Client (Spring Shell)
 
-This is the CLI interface where you type natural language prompts.
+This is the CLI interface where interprets natural language prompts and call mcp server tools.
 
 1. Go to `MultiCloudInfraAI - Client`
 2. Open `src/main/resources/application.properties`
@@ -73,6 +73,8 @@ Once started, you can type:
 ```bash
 chat create a vm with name dev-instance, vcn name dev-vcn, subnet name dev-subnet, with 2 ocpus and 4gb memory in oracle cloud compartment my-compartment
 ```
+
+Open the MCP Server console to see the terraform logs and debug if some errors occurs !
 
 ---
 
@@ -124,26 +126,9 @@ if (provider.equals("aws")) {
     addAWSComputeVariables(variables, ...);
 }
 ```
-
 ---
 
-### 4. Configure the paths
-
-Ensure the `application.properties` has:
-
-```properties
-mcp.terraform.templates-path=/your/path/templates/
-```
-
-The structure will resolve to:
-
-```
-templates/<provider>/<resource>/
-```
-
----
-
-### 5. Remove resource
+### 4. Remove resource
 
 If you're working with a new resource type (not `compute`), duplicate the `deleteComputeVmOracleCloud` method and:
 
@@ -154,7 +139,7 @@ No additional changes are needed.
 
 ---
 
-### 6. Edit resource
+### 5. Edit resource
 
 * For standard changes (`ocpus`, `memory`, `display_name`), use `editCommonVariables(...)`.
 * For provider-specific logic, create:
@@ -170,7 +155,7 @@ Files.write(...)
 
 ---
 
-### 7. Provider resolution helper
+### 6. Provider resolution helper
 
 The method `resolveProviderFolder(String providerName)` allows flexibility in naming. For example:
 
@@ -185,9 +170,9 @@ switch (providerName.toLowerCase()) {
 
 ---
 
-### 8. Compartments for Oracle (OCI) ⚠️
+### 7. Compartments for Oracle (OCI) ⚠️
 
-Create a file named `compartments.properties` in `resources/`, mapping:
+Validate a file named `compartments.properties` in `resources/`, mapping:
 
 ```
 <compartment_name>=<compartment_ocid>
