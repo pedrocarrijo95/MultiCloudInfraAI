@@ -11,12 +11,23 @@
 * Go to the folder `templates/oracle/compute/` or `templates/google/compute/`.
 * Open the `terraform.tfvars.template` file and insert your credentials/config info.
 * Make sure static info like region or credentials are filled in `terraform.tfvars.template`.
-* Only For Oracle Cloud (Configure the file compartments.properties with the compartment_name=compartment_ocid)
+```hcl
+tenancy_ocid = "<tenancy_ocid>"
+user_ocid = "<user_ocid>"
+fingerprint = "<fingerprint>"
+private_key_path = "<prefixpath>/MulticloudInfraAI/Terraform/templates/oracle/key/privatekey.pem"
+region = "<region>"
 
-> If using credentials like keys, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
+ssh_public_keys = "<prefix-path>/MultiCloudInfraAI/Terraform/templates/oracle/key/ssh_key_compute.pub"
+``` 
+* (Only for Oracle Cloud) Configure the file compartments.properties with the compartment_name=compartment_ocid
 
-* Fields wrapped with {{variable}} are dynamically filled by the Java code. Do not edit them manually — they are automatically replaced at runtime.
-* Fields between < > (e.g., <tenancy-ocid>) must be manually filled in before running the project. These are fixed values such as keys, OCIDs, regions, etc.
+> If using credentials like keys to authenticate (Oracle Cloud) with a `privatekey.pem` for example, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly.
+
+> To provision your compute VMs (Oracle Cloud) using SSH keys, ensure they're in a subfolder (e.g., `oracle/keys/`) and referenced properly (e.g., `ssh_key_compute.pub`)
+
+* Fields wrapped with `{{variable}}` are dynamically filled by the Java code. Do not edit them manually — they are automatically replaced at runtime.
+* Fields between `< >` (e.g., `<tenancy-ocid>`) must be manually filled in before running the project. These are fixed values such as keys, `OCIDs, regions, etc.`
 
 ---
 
@@ -24,8 +35,20 @@
 
 This is the backend that interprets natural language and triggers Terraform.
 
+1. Go to `MultiCloudInfraAI - Server`
+2. Open `src/main/resources/application.properties`
+3. Set the base path to your cloned project `mcp.base-path=<prefix-path>/MultiCloudInfraAI/`
+```properties
+# Terraform Tool VARs
+#your base path where contain mcp client and server folders
+mcp.base-path=<prefix-path>/MultiCloudInfraAI/ > (e.g, /home/opc/volume/MultiCloudInfraAI/) #edit just this <prefix-path>
+#your templates path
+terraform.binary.path=/usr/bin/terraform #keep or change the path to your terraform executable
+```
+4. Run the server
+
 ```bash
-cd mcp-server
+cd MultiCloudInfraAI - Server
 mvn spring-boot:run
 ```
 
@@ -35,12 +58,13 @@ mvn spring-boot:run
 
 This is the CLI interface where you type natural language prompts.
 
-1. Go to `mcp-client`
+1. Go to `MultiCloudInfraAI - Client`
 2. Open `src/main/resources/application.properties`
-3. Set the connection URL to your MCP Server (e.g., `http://localhost:8181`)
+3. Set the connection URL (`spring.ai.mcp.client.sse.connections.server1.url`) to your MCP Server (e.g., `http://localhost:8181`)
+4. Set your OpenAI API Key (`spring.ai.openai.api-key=<openai_api_key>`)
 
 ```bash
-cd mcp-client
+cd MultiCloudInfraAI - Client
 mvn spring-boot:run
 ```
 
