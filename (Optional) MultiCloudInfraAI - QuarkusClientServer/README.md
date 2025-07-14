@@ -12,7 +12,7 @@ http://pedrocarrijo.dev
 
 ### Want to explore MultiCloudInfraAI with more resource types, specific cloud providers, and learn how to extend what’s already built? Check out our step-by-step guide and get started now.
 
-👉 [How to Set Up MultiCloudInfraAI](docs/guide-setup-expandability.md)
+👉 [How to Set Up MultiCloudInfraAI](../docs/guide-setup-expandability.md)
 
 ---
 
