@@ -42,6 +42,14 @@ You can easily expand to support other resources (e.g. buckets, databases, etc.)
 
 ---
 
+## ⚙️ Do you want try with Quarkus?
+
+📖 For setup instructions, read:
+
+👉 [`(Optional) MultiCloudInfraAI - QuarkusClientServer`](https://github.com/pedrocarrijo95/MultiCloudInfraAI/tree/main/(Optional)%20MultiCloudInfraAI%20-%20QuarkusClientServer)
+
+---
+
 ## 🧪 Example Prompt via CLI
 
 ```bash
@@ -100,14 +108,6 @@ Created by [Pedro Carrijo](https://github.com/pedrocarrijo95), this is a project
 📖 For setup instructions, adding providers or resources, and template rules, read:
 
 👉 [`docs/guide-setup-expandability.md`](docs/guide-setup-expandability.md)
-
----
-
-## ⚙️ Do you want try with Quarkus?
-
-📖 For setup instructions, read:
-
-👉 [`(Optional) MultiCloudInfraAI - QuarkusClientServer`](https://github.com/pedrocarrijo95/MultiCloudInfraAI/tree/main/(Optional)%20MultiCloudInfraAI%20-%20QuarkusClientServer)
 
 ---
 
