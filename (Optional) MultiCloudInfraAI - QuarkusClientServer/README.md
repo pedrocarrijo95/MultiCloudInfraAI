@@ -41,7 +41,7 @@ quarkus.langchain4j.openai.api-key=<api-key>
 
 # Terraform Tool VARs
 #your base path where contain mcp client and server folders
-mcp.base-path=<prefix-path>/MultiCloudInfraAI/ > (e.g, /home/opc/volume/MultiCloudInfraAI/) #edit just this <prefix-path>
+mcp.base-path=<prefix-path>/MultiCloudInfraAI/ # > (e.g, /home/opc/volume/MultiCloudInfraAI/) edit just this <prefix-path>
 #your templates path
 terraform.binary.path=/usr/bin/terraform #keep or change the path to your terraform executable
 ```
